@@ -22,4 +22,15 @@ public class PurchaseController {
     purchaseService.createPurchase(purchaseDto);
   }
 
+  @RequestMapping(value = "/purchase/{id}", method = RequestMethod.GET)
+  public PurchaseDto findByID(@PathVariable int id) {
+    return purchaseService.getPurchase(id);
+  }
+
+  @RequestMapping(value = "/purchase/{id}", method = RequestMethod.DELETE)
+//  @ResponseStatus(HttpStatus.OK)
+  public void create(@PathVariable int id) {
+    purchaseService.deletePurchase(id);
+  }
+
 }
