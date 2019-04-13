@@ -6,11 +6,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
-@EqualsAndHashCode(of = { "id", "user", "name", "purchasedAt", "price"})
-@ToString(of = { "user", "name", "purchasedAt", "price" })
+@EqualsAndHashCode(of = {"id", "user", "name", "purchasedAt", "price"})
+@ToString(of = {"user", "name", "purchasedAt", "price"})
 @Setter
 @Getter
 @Entity

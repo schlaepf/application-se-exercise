@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Purchase} from "../model/Purchase";
 import {User} from "../scratch/user";
 import {HttpClient} from "@angular/common/http";

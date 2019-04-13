@@ -10,8 +10,8 @@ import lombok.ToString;
 import java.util.Date;
 
 
-@EqualsAndHashCode(of = { "id", "user", "name", "purchasedAt", "price"})
-@ToString(of = { "user", "name", "purchasedAt", "price" })
+@EqualsAndHashCode(of = {"id", "user", "name", "purchasedAt", "price"})
+@ToString(of = {"user", "name", "purchasedAt", "price"})
 @Setter
 @Getter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")

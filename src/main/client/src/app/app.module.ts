@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ScratchComponent } from './scratch/scratch.component';
+import {RouterModule, Routes} from '@angular/router';
+import {AppComponent} from './app.component';
+import {ScratchComponent} from './scratch/scratch.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CreatePurchaseComponent } from './create-purchase/create-purchase.component';
-import { PurchasesComponent } from './purchases/purchases.component';
+import {CreatePurchaseComponent} from './create-purchase/create-purchase.component';
+import {PurchasesComponent} from './purchases/purchases.component';
 import {FormsModule} from "@angular/forms";
-import { EditPurchaseComponent } from './edit-purchase/edit-purchase.component';
+import {EditPurchaseComponent} from './edit-purchase/edit-purchase.component';
 
 const appRoutes: Routes = [
   {
@@ -23,12 +23,12 @@ const appRoutes: Routes = [
     path: 'editPurchase/:id',
     component: EditPurchaseComponent
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/purchases',
     pathMatch: 'full'
   }
 ];
-
 
 
 @NgModule({
@@ -48,9 +48,8 @@ const appRoutes: Routes = [
     ),
     FormsModule
   ],
-  providers: [
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

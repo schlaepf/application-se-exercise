@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../scratch/user";
 import {HttpClient} from "@angular/common/http";
 import {Purchase} from "../model/Purchase";
@@ -15,7 +15,7 @@ export class CreatePurchaseComponent implements OnInit {
 
   responseMessage: string;
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient: HttpClient) {
     this.users = [];
     this.purchase = new Purchase();
     this.loadUsers();
