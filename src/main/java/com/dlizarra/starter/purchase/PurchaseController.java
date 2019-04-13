@@ -28,9 +28,13 @@ public class PurchaseController {
   }
 
   @RequestMapping(value = "/purchase/{id}", method = RequestMethod.DELETE)
-//  @ResponseStatus(HttpStatus.OK)
   public void create(@PathVariable int id) {
     purchaseService.deletePurchase(id);
+  }
+
+  @RequestMapping(value = "/purchase/{id}", method = RequestMethod.PUT)
+  public void update(@PathVariable int id, @RequestBody PurchaseDto purchaseDto) {
+    purchaseService.updatePurchase(purchaseDto);
   }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService{
@@ -26,7 +27,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 
   @Override
   public void updatePurchase(PurchaseDto user) {
-
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   @Override
@@ -34,9 +35,10 @@ public class PurchaseServiceImpl implements PurchaseService{
     purchaseRepository.delete(id);
   }
 
+  @Transactional(readOnly = true)
   @Override
   public PurchaseDto getPurchase(Integer id) {
-    return null;
+    return mapper.map(find(id), PurchaseDto.class);
   }
 
   @Transactional(readOnly = true)
@@ -47,5 +49,11 @@ public class PurchaseServiceImpl implements PurchaseService{
     purchases.forEach(x -> purchaseDto.add(mapper.map(x, PurchaseDto.class)));
 
     return purchaseDto;
+  }
+
+  @Transactional(readOnly = true)
+  private Purchase find(Integer id) {
+    final Optional<Purchase> userOpt = purchaseRepository.findOne(id);
+    return userOpt.orElseThrow(() -> new PurchaseNotFoundException(id));
   }
 }
