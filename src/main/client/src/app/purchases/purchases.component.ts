@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Purchase} from "../model/Purchase";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../scratch/user";
-import {PurchaseService} from "../PurchaseService";
 
 @Component({
   selector: 'app-purchases',

@@ -54,7 +54,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 
   @Transactional(readOnly = true)
   private Purchase find(Integer id) {
-    final Optional<Purchase> userOpt = purchaseRepository.findOne(id);
-    return userOpt.orElseThrow(() -> new PurchaseNotFoundException(id));
+    final Optional<Purchase> purchaseOpt = purchaseRepository.findOne(id);
+    return purchaseOpt.orElseThrow(() -> new PurchaseNotFoundException(id));
   }
 }

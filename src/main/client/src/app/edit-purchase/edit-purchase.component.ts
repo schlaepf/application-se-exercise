@@ -36,19 +36,20 @@ export class EditPurchaseComponent implements OnInit {
 
   private loadPurchase(id: number) {
     this.httpClient.get<Purchase>("api/purchase/" + id)
-      .subscribe( resp => {
+      .subscribe(resp => {
         this.purchase = resp;
         console.log(resp);
       });
   }
 
   private updatePurchase() {
-    this.httpClient.put("api/users", this.purchase)
+    this.httpClient.put("api/purchase/" + this.purchase.id, this.purchase)
       .subscribe(resp => {
-        this.responseMessage = "Update successful!";
-      },
+          this.responseMessage = "Update successful!";
+        },
         err => {
           this.responseMessage = "There was an error while saving the purchase. Please try again.";
+          console.log(err);
         });
   }
 
