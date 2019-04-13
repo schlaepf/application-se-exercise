@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Setter
 @Getter
@@ -17,12 +18,15 @@ public class Purchase {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  //  @OneToOne(fetch = FetchType.EAGER)
   @Column(nullable = false)
-//  @OneToOne(fetch = FetchType.EAGER)
   private String user;
 
   @Column(nullable = false)
-  private LocalDateTime purchasedAt;
+  private String name;
+
+  @Column(nullable = false)
+  private Date purchasedAt;
 
   @Column(nullable = false)
   private int price;
@@ -33,6 +37,7 @@ public class Purchase {
   public Purchase(final Purchase purchase) {
     this.id = purchase.id;
     this.user = purchase.user;
+    this.name = purchase.name;
     this.purchasedAt = purchase.purchasedAt;
     this.price = purchase.price;
   }

@@ -1,9 +1,8 @@
 package com.dlizarra.starter.purchase;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +14,12 @@ public class PurchaseController {
   @RequestMapping(value = "/purchases", method = RequestMethod.GET)
   public List<PurchaseDto> findAll() {
     return purchaseService.getPurchases();
+  }
+
+  @RequestMapping(value = "/purchase", method = RequestMethod.POST)
+  @ResponseStatus(HttpStatus.CREATED)
+  public void create(@RequestBody PurchaseDto purchaseDto) {
+    purchaseService.createPurchase(purchaseDto);
   }
 
 }

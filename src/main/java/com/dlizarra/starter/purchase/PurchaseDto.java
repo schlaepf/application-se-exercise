@@ -7,11 +7,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 
-@EqualsAndHashCode(of = { "id", "user", "purchasedAt", "price"})
-@ToString(of = { "user", "purchasedAt", "price" })
+@EqualsAndHashCode(of = { "id", "user", "name", "purchasedAt", "price"})
+@ToString(of = { "user", "name", "purchasedAt", "price" })
 @Setter
 @Getter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -21,7 +21,9 @@ public class PurchaseDto {
 
   private String user;
 
-  private LocalDateTime purchasedAt;
+  private String name;
 
-  private int price;
+  private Date purchasedAt;
+
+  private double price;
 }
