@@ -13,5 +13,12 @@
   <br><br>
 </div>
 
+<h2>Price of purchases by user</h2>
+<div id="purchases-by-user">
+  <div *ngFor="let key of objectKeys(sumOfPurchasesByUser)">
+    {{key}}: {{sumOfPurchasesByUser[key]}}
+  </div>
+</div>
+
 <button class="nav-item nav-link-edit" [routerLink]="['/createPurchase']">Create new Purchase</button>
 

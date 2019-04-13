@@ -49,7 +49,6 @@ export class EditPurchaseComponent implements OnInit {
         },
         err => {
           this.responseMessage = "There was an error while saving the purchase. Please try again.";
-          console.log(err);
         });
   }
 

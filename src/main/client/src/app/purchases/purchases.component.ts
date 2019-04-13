@@ -10,8 +10,11 @@ import {User} from "../scratch/user";
 })
 export class PurchasesComponent implements OnInit {
 
+  objectKeys = Object.keys;
   purchases: Array<Purchase>;
   sumOfAllPurchases: number;
+
+  sumOfPurchasesByUser: { [id: string] : number; } = {};
 
   constructor(private httpClient:HttpClient) {
     this.purchases = [];
@@ -26,7 +29,7 @@ export class PurchasesComponent implements OnInit {
     this.httpClient.get<Purchase[]>("api/purchases")
       .subscribe(resp => {
         this.purchases = resp;
-        this.calculateSumOfAllPurchases();
+        this.reloadValues();
         console.log(this.purchases);
       });
   }
@@ -42,9 +45,27 @@ export class PurchasesComponent implements OnInit {
       .subscribe( resp => {
         console.log('Purchase successfully deleted!');
         this.purchases.splice(id, 1);
-        this.calculateSumOfAllPurchases();
+        this.reloadValues();
       }, err => {
         console.log('Purchase could not be deleted!');
       });
+  }
+
+  private reloadValues() {
+    this.calculateSumOfAllPurchases();
+    this.calculateSumOfPurchasesByUser();
+  }
+
+  calculateSumOfPurchasesByUser() {
+    this.sumOfPurchasesByUser = {};
+    for (const purchase of this.purchases) {
+      if (Object.keys(this.sumOfPurchasesByUser).includes(purchase.user)) {
+        let temp = this.sumOfPurchasesByUser[purchase.user];
+        this.sumOfPurchasesByUser[purchase.user] = temp + purchase.price;
+      } else {
+        this.sumOfPurchasesByUser[purchase.user] = purchase.price;
+      }
+    }
+    console.log(this.sumOfPurchasesByUser);
   }
 }
