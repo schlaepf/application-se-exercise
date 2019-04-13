@@ -15,7 +15,8 @@
   <br>
   Purchased at:
   <input name="price" type="date" [(ngModel)]="purchase.purchasedAt">
-  <button name="submit" (click)="postPurchase()">Submit purchase</button>
+  <br>
+  <button name="submit" (click)="updatePurchase()">Edit purchase</button>
   <br>
   <div>{{responseMessage}}</div>
 </form>

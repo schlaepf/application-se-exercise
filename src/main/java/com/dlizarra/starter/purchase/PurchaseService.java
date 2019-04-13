@@ -5,7 +5,7 @@ import java.util.List;
 public interface PurchaseService {
   void createPurchase(PurchaseDto purchase);
 
-  void updatePurchase(PurchaseDto user);
+  void updatePurchase(Integer id, PurchaseDto user);
 
   void deletePurchase(Integer id);
 

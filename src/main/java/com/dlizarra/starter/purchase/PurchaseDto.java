@@ -20,7 +20,6 @@ public class PurchaseDto {
   private Integer id;
 
   private String user;
-
   private String name;
 
   private Date purchasedAt;

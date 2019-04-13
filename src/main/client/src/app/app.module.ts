@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CreatePurchaseComponent } from './create-purchase/create-purchase.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import {FormsModule} from "@angular/forms";
+import { EditPurchaseComponent } from './edit-purchase/edit-purchase.component';
 
 const appRoutes: Routes = [
   {
@@ -18,8 +19,12 @@ const appRoutes: Routes = [
     path: 'createPurchase',
     component: CreatePurchaseComponent
   },
+  {
+    path: 'editPurchase/:id',
+    component: EditPurchaseComponent
+  },
   { path: '',
-    redirectTo: '/',
+    redirectTo: '/purchases',
     pathMatch: 'full'
   }
 ];
@@ -32,7 +37,8 @@ const appRoutes: Routes = [
     ScratchComponent,
     PurchasesComponent,
     CreatePurchaseComponent,
-    PurchasesComponent
+    PurchasesComponent,
+    EditPurchaseComponent
   ],
   imports: [
     BrowserModule,

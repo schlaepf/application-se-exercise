@@ -26,8 +26,9 @@ public class PurchaseServiceImpl implements PurchaseService{
   }
 
   @Override
-  public void updatePurchase(PurchaseDto user) {
-    throw new UnsupportedOperationException("Not yet implemented");
+  public void updatePurchase(Integer id, PurchaseDto purchaseDto) {
+    final Purchase newPurchase = mapper.map(purchaseDto, Purchase.class);
+    purchaseRepository.save(newPurchase);
   }
 
   @Override

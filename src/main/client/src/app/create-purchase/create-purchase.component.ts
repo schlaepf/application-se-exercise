@@ -9,12 +9,6 @@ import {Purchase} from "../model/Purchase";
   styleUrls: ['./create-purchase.component.css']
 })
 export class CreatePurchaseComponent implements OnInit {
-
-  selectedUser: User;
-  productName: string;
-  purchasedAt: Date;
-  price: number;
-
   purchase: Purchase;
 
   users: Array<User>;

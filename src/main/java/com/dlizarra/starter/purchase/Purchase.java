@@ -1,13 +1,16 @@
 package com.dlizarra.starter.purchase;
 
-import com.dlizarra.starter.user.User;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@EqualsAndHashCode(of = { "id", "user", "name", "purchasedAt", "price"})
+@ToString(of = { "user", "name", "purchasedAt", "price" })
 @Setter
 @Getter
 @Entity
@@ -18,8 +21,10 @@ public class Purchase {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  //  @OneToOne(fetch = FetchType.EAGER)
+  //@OneToMany(fetch = FetchType.EAGER)
   @Column(nullable = false)
+  // This should actually be a member variable of type User. I could not figure out how to model
+  // the relationship mapping in JPA so I just stored user name as a string.
   private String user;
 
   @Column(nullable = false)

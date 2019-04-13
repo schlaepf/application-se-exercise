@@ -1,10 +1,17 @@
-<div id="purchase-list" *ngFor="let purchase of purchases; let i = index">
-  <div>
+<h2>List of Purchases</h2>
+<div id="purchase-list">
+  <div *ngFor="let purchase of purchases; let i = index">
     <span>Purchase:     {{purchase.name}}</span><br>
     <span>Purchased by: {{purchase.user}}</span><br>
     <span>Price:        {{purchase.price}}</span><br>
     <span>Purchased at: {{purchase.purchasedAt}}</span><br>
+    <button name="delete" (click)="deletePurchase(i)">Delete</button>
+    <button class="nav-item nav-link-edit" [routerLink]="['/editPurchase', purchase.id]">Edit</button>
+    <br><br>
   </div>
-  <button name="delete" (click)="deletePurchase(i)">Delete</button>
+  <div id="sum-of-purchases">Sum of all purchases: {{sumOfAllPurchases}}</div>
   <br><br>
 </div>
+
+<button class="nav-item nav-link-edit" [routerLink]="['/createPurchase']">Create new Purchase</button>
+

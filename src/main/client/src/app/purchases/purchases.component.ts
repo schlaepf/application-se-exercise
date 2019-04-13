@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Purchase} from "../model/Purchase";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../scratch/user";
+import {PurchaseService} from "../PurchaseService";
 
 @Component({
   selector: 'app-purchases',
@@ -11,6 +12,7 @@ import {User} from "../scratch/user";
 export class PurchasesComponent implements OnInit {
 
   purchases: Array<Purchase>;
+  sumOfAllPurchases: number;
 
   constructor(private httpClient:HttpClient) {
     this.purchases = [];
@@ -25,8 +27,14 @@ export class PurchasesComponent implements OnInit {
     this.httpClient.get<Purchase[]>("api/purchases")
       .subscribe(resp => {
         this.purchases = resp;
+        this.calculateSumOfAllPurchases();
         console.log(this.purchases);
       });
+  }
+
+  private calculateSumOfAllPurchases() {
+    this.sumOfAllPurchases = 0;
+    this.purchases.forEach(purchase => this.sumOfAllPurchases += purchase.price);
   }
 
   deletePurchase(id: number) {
@@ -35,9 +43,9 @@ export class PurchasesComponent implements OnInit {
       .subscribe( resp => {
         console.log('Purchase successfully deleted!');
         this.purchases.splice(id, 1);
+        this.calculateSumOfAllPurchases();
       }, err => {
         console.log('Purchase could not be deleted!');
       });
   }
-
 }

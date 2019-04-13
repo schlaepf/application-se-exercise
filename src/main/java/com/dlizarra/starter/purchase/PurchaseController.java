@@ -34,7 +34,7 @@ public class PurchaseController {
 
   @RequestMapping(value = "/purchase/{id}", method = RequestMethod.PUT)
   public void update(@PathVariable int id, @RequestBody PurchaseDto purchaseDto) {
-    purchaseService.updatePurchase(purchaseDto);
+    purchaseService.updatePurchase(id, purchaseDto);
   }
 
 }
