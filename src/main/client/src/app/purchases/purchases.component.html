@@ -1,3 +1,10 @@
-<p>
-  purchases works!
-</p>
+<div id="purchase-list" *ngFor="let purchase of purchases; let i = index">
+  <div>
+    <span>Purchase:     {{purchase.name}}</span><br>
+    <span>Purchased by: {{purchase.user}}</span><br>
+    <span>Price:        {{purchase.price}}</span><br>
+    <span>Purchased at: {{purchase.purchasedAt}}</span><br>
+  </div>
+  <button name="delete" (click)="deletePurchase(i)">Delete</button>
+  <br><br>
+</div>
